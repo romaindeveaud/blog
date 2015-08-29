@@ -11,6 +11,19 @@
 |
 */
 
+/*
 $app->get('/', function () use ($app) {
-    return $app->welcome();
+  //    return $app->welcome();
+  return view('index');
 });
+ */
+
+$app->get('/', 'PostController@index');
+$app->get('/post/{id}', '\PostController@show');
+$app->get('/new-post', function() use ($app) {
+  return view('post.create');
+});
+
+$app->post('/new-post', 'PostController@create');
+$app->post('/delete-post/{id}', 'PostController@delete');
+$app->post('/edit-post/{id}', 'PostController@update');
