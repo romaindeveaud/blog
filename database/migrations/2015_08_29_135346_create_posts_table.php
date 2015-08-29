@@ -19,8 +19,6 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->text('content');
             $table->integer('author_id');
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
             $table->integer('count_read');
         });
     }
