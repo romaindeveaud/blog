@@ -10,11 +10,13 @@ use Illuminate\Support\Facades\Hash;
 class PostController extends Controller {
 
   public function index () {
-    $posts = Post::query()->orderBy('created_at');
+    $posts = Post::query()->get()->forPage(1,10)->all();
+    return view('index', ['posts' => $posts]);
   }
 
   public function show ($id) {
     $post = Post::query()->findOrFail($id);
+    return view('post.index', ['post' => $post]);
   }
 
   public function create (Request $request) {

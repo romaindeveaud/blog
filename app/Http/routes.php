@@ -19,7 +19,7 @@ $app->get('/', function () use ($app) {
  */
 
 $app->get('/', 'PostController@index');
-$app->get('/post/{id}', '\PostController@show');
+$app->get('/post/{id}', 'PostController@show');
 $app->get('/new-post', function() use ($app) {
   return view('post.create');
 });
