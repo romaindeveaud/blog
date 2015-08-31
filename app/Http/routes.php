@@ -20,7 +20,7 @@ $app->get('/', function () use ($app) {
 
 $app->get('/', 'PostController@index');
 $app->get('/post/{id:[0-9]+}', 'PostController@show_with_id');
-$app->get('/post/{urlified_title:[A-Za-z-]+}', 'PostController@show');
+$app->get('/post/{urlified_title:[A-Za-z\-]+}', 'PostController@show');
 $app->get('/new-post', function() use ($app) {
   return view('post.create');
 });
