@@ -11,12 +11,29 @@ class PostController extends Controller {
 
   public function index () {
     $posts = Post::query()->get()->forPage(1,10)->all();
+
+    foreach($posts as $post)
+      $post->author = $post->getAuthor();
+
     return view('index', ['posts' => $posts]);
   }
 
-  public function show ($id) {
+  public function show_with_id ($id) {
     $post = Post::query()->findOrFail($id);
-    return view('post.index', ['post' => $post]);
+    $post->count_read += 1;
+    $post->save();
+
+    $post->author = $post->getAuthor();
+    return view('post.index', [ 'post' => $post ]);
+  }
+
+  public function show ($urlified_title) {
+    $post = Post::query()->where('urlified_title', $urlified_title)->first();
+    $post->count_read += 1;
+    $post->save();
+
+    $post->author = $post->getAuthor();
+    return view('post.index', [ 'post' => $post ]);
   }
 
   public function create (Request $request) {

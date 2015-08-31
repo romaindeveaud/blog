@@ -17,9 +17,13 @@ class CreatePostsTable extends Migration
             $table->timestamps();
 
             $table->string('title');
+            $table->string('image');
+            $table->string('urlified_title');
             $table->text('content');
-            $table->integer('author_id');
+            $table->integer('author_id')->unsigned();
             $table->integer('count_read');
+
+            $table->foreign('author_id')->references('id')->on('users');
         });
     }
 

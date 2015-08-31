@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title', $post->title)
-@section('bgimg', '/img/outdoor-bg.jpg') <!-- change with a post image -->
+@section('bgimg', '/img/'.$post->image) <!-- change with a post image -->
 
 @section('content')
   <article>
