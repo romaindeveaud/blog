@@ -62,9 +62,10 @@ $app->singleton(
       Laravel\Lumen\Http\Middleware\VerifyCsrfToken::class,
  ]);
 
-// $app->routeMiddleware([
+$app->routeMiddleware([
+  'auth' => 'App\Http\Middleware\Authenticate',
 
-// ]);
+ ]);
 
 /*
 |--------------------------------------------------------------------------
@@ -94,5 +95,8 @@ $app->singleton(
 $app->group(['namespace' => 'App\Http\Controllers'], function ($app) {
     require __DIR__.'/../app/Http/routes.php';
 });
+
+//$app->bind('App\Http\Middleware\Authenticate', 'App\Http\Middleware\Authenticate');
+//$app->alias('App\Http\Middleware\Authenticate', 'middleware.auth');
 
 return $app;

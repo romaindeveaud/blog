@@ -3,6 +3,8 @@
 @section('title', 'Reboot à 4 mains.')
 @section('bgimg', '/img/outdoor-bg.jpg')
 
+<?php setlocale(LC_TIME, 'fr_FR'); ?>
+
 @section('content')
   <div class="container">
     <div class="row">
@@ -14,14 +16,14 @@
               {{ $post->title }}
             </h2>
           </a>
-          <p class="post-meta">Posted by <a href="#">{{ $post->author->name }}</a> on September 24, 2014</p>
+          <p class="post-meta"><a href="#">{{ $post->author->name }}</a>, le {{ strftime('%e %B %Y',strtotime($post->created_at))  }}</p>
         </div>
          @endforeach
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
                     <li class="next">
-                        <a href="#">Older Posts &rarr;</a>
+                        <a href="#">J'en veux encore! &rarr;</a>
                     </li>
                 </ul>
       </div>

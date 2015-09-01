@@ -18,12 +18,19 @@ $app->get('/', function () use ($app) {
 });
  */
 
+/*
+$app->get('/login', function() use ($app) {
+  return view('auth.login');
+});
+*/
+$app->get('/auth/login', 'AuthController@get_login');
+
 $app->get('/', 'PostController@index');
 $app->get('/post/{id:[0-9]+}', 'PostController@show_with_id');
 $app->get('/post/{urlified_title:[A-Za-z\-]+}', 'PostController@show');
-$app->get('/new-post', function() use ($app) {
+$app->get('/new-post', [ 'middleware' => 'auth', function() use ($app) {
   return view('post.create');
-});
+}]);
 
 $app->post('/new-post', 'PostController@create');
 $app->post('/delete-post/{id}', 'PostController@delete');

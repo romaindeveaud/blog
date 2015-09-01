@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 
 class PostController extends Controller {
 
-  public function index () {
+  public function index (Request $request) {
     $posts = Post::query()->get()->forPage(1,10)->all();
 
     foreach($posts as $post)
@@ -18,7 +18,7 @@ class PostController extends Controller {
     return view('index', ['posts' => $posts]);
   }
 
-  public function show_with_id ($id) {
+  public function show_with_id (Request $request, $id) {
     $post = Post::query()->findOrFail($id);
     $post->count_read += 1;
     $post->save();
@@ -27,7 +27,7 @@ class PostController extends Controller {
     return view('post.index', [ 'post' => $post ]);
   }
 
-  public function show ($urlified_title) {
+  public function show (Request $request, $urlified_title) {
     $post = Post::query()->where('urlified_title', $urlified_title)->first();
     $post->count_read += 1;
     $post->save();
