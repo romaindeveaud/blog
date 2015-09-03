@@ -16,6 +16,7 @@
 
     <!-- Custom CSS -->
     <link href="/css/clean-blog.css" rel="stylesheet">
+    <link href="/css/blog.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="//fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css" />
@@ -134,7 +135,7 @@
     <script src="/js/bootstrap.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="/js/clean-blog.min.js"></script>
+    <script src="/js/clean-blog.js"></script>
 
 </body>
 

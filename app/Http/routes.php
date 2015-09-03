@@ -23,7 +23,9 @@ $app->get('/login', function() use ($app) {
   return view('auth.login');
 });
 */
-$app->get('/auth/login', 'AuthController@get_login');
+$app->get('/login',  'AuthController@login');
+$app->get('/logout', 'AuthController@logout');
+$app->post('/login', 'AuthController@authenticate');
 
 $app->get('/', 'PostController@index');
 $app->get('/post/{id:[0-9]+}', 'PostController@show_with_id');
