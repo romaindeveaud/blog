@@ -1,7 +1,6 @@
-@extends('layouts.master')
+@extends('layouts.backend')
 
 @section('title', 'RÀ4M - Authentification')
-@section('bgimg', '/img/outdoor-bg.jpg') <!-- change with a post image -->
 
 @section('content')
 <div class="container">

@@ -31,8 +31,8 @@ class AuthController extends Controller
 
     $credentials = $request->only('email', 'password');
 
-    if (Auth::attempt($credentials/*, $request->has('remember')*/)) {
-      return redirect(app('session')->get('url.intended'));
+    if (Auth::attempt($credentials, $request->has('remember'))) {
+      return redirect(app('session')->pull('url.intended','/'));
     }
 
     $request->session()->flash('error', 'Mauvais email ou mot de passe.');
@@ -42,6 +42,9 @@ class AuthController extends Controller
   }
 
   public function login() {
+    if(Auth::check())
+      return redirect('/');
+
     return view('auth.login');  
   }
 

@@ -83,6 +83,11 @@ article {
     color: white;
     padding: 20px;
   }
+
+  .navbar-admin .nav  li a {
+    color: black;
+  }
+
   .navbar-custom .nav li a:hover,
   .navbar-custom .nav li a:focus {
     color: rgba(255, 255, 255, 0.8);

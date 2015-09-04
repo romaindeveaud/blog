@@ -1,6 +1,6 @@
-@extends('layouts.master')
+@extends('layouts.backend')
 
-@section('title', 'Create post')
+@section('title', 'RÀ4M - Nouveau post')
 
 @section('sidebar')
     @parent
