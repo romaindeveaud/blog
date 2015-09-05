@@ -34,6 +34,6 @@ $app->get('/new-post', [ 'middleware' => 'auth', function() use ($app) {
   return view('post.create');
 }]);
 
-$app->post('/new-post', 'PostController@create');
+$app->post('/create-post', 'PostController@create');
 $app->post('/delete-post/{id}', 'PostController@delete');
 $app->post('/edit-post/{id}', 'PostController@update');

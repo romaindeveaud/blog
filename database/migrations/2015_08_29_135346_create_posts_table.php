@@ -17,11 +17,12 @@ class CreatePostsTable extends Migration
             $table->timestamps();
 
             $table->string('title');
-            $table->string('image');
+            $table->string('image')->default('outdoor-bg.jpg');
             $table->string('urlified_title');
             $table->text('content');
             $table->integer('author_id')->unsigned();
-            $table->integer('count_read');
+            $table->integer('count_read')->default(0);
+            $table->boolean('is_draft')->default(true);
 
             $table->foreign('author_id')->references('id')->on('users');
         });

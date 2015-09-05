@@ -15,6 +15,9 @@
                 <a href="/new-post">Nouveau post</a>
               </li>
               <li>
+                <a href="/dashboard">Tableau de bord</a>
+              </li>
+              <li>
                 <a href="/logout">Déconnexion</a>
               </li>
               @endif
