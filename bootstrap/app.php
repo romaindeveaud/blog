@@ -99,5 +99,7 @@ $app->group(['namespace' => 'App\Http\Controllers'], function ($app) {
 //$app->bind('\App\User', 'App\Models\User');
 //$app->bind('App\Http\Middleware\Authenticate', 'App\Http\Middleware\Authenticate');
 //$app->alias('App\Http\Middleware\Authenticate', 'middleware.auth');
+//
+$app->register('Irazasyed\Larasupport\Providers\ArtisanServiceProvider');
 
 return $app;

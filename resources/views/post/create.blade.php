@@ -5,8 +5,30 @@
 @section('content')
 <div class="container">
 <form class="form-post" method="POST" action="/create-post">
-  <input type="text" name="title" id="post_title" class="form-control" placeholder="Titre du post" />
-  <textarea id="post_content" name="content"></textarea>
+<input type="hidden" name="_post_id" value="{{ $post_id }}">
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#tab-texte">Texte</a>
+<!--
+-->
+  </li>
+  <li><a data-toggle="tab" href="#tab-img-bg">Image de fond</a>
+<!--
+-->
+  </li>
+  <li><a data-toggle="tab" href="#tab-imgs">Images du post</a></li>
+</ul>
+
+<div class="tab-content">
+  <div id="tab-texte" class="tab-pane fade in active">
+    <input type="text" name="title" id="post_title" class="form-control" placeholder="Titre du post" />
+    <textarea id="post_content" name="content"></textarea>
+  </div>
+  <div id="tab-img-bg" class="tab-pane fade">
+    <label class="control-label">Image de fond</label>
+    <input id="input-24" name="image-bg" type="file" multiple=true class="file-loading"> 
+  </div>
+  <div id="tab-imgs" class="tab-pane fade">
+  </div>
 </form>
 </div>
 
@@ -38,4 +60,5 @@ var simplemde = new SimpleMDE({
 });
 simplemde.render();
 </script>
+<script src="/js/image-loading.js"></script>
 @stop

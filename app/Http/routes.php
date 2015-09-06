@@ -30,10 +30,16 @@ $app->post('/login', 'AuthController@authenticate');
 $app->get('/', 'PostController@index');
 $app->get('/post/{id:[0-9]+}', 'PostController@show_with_id');
 $app->get('/post/{urlified_title:[A-Za-z\-]+}', 'PostController@show');
+/*
 $app->get('/new-post', [ 'middleware' => 'auth', function() use ($app) {
   return view('post.create');
 }]);
+ */
+$app->get('/new-post', [ 'middleware' => 'auth', 'uses' => 'PostController@new_post' ]);
 
 $app->post('/create-post', 'PostController@create');
 $app->post('/delete-post/{id}', 'PostController@delete');
 $app->post('/edit-post/{id}', 'PostController@update');
+
+$app->post('/img-bg-upload', 'PostController@image_bg_upload');
+$app->post('/img-upload', 'PostController@image_upload');

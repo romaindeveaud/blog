@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title')</title>
 
@@ -18,12 +19,24 @@
     <link href="/css/clean-blog.css" rel="stylesheet">
     <link href="/css/blog.css" rel="stylesheet">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    <link href="/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+
+    <!-- jQuery -->
+    <script src="/js/jquery.min.js"></script>
+
+    <script src="/js/plugins/canvas-to-blob.min.js" type="text/javascript"></script>
+    <script src="/js/fileinput.min.js" type="text/javascript"></script>
+    <script src="/js/fileinput_locale_fr.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/js/bootstrap.min.js"></script>
 
     <!-- Custom Fonts -->
     <link href="//fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css" />
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -47,11 +60,6 @@
     @yield('content')
 
 
-    <!-- jQuery -->
-    <script src="/js/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="/js/bootstrap.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
     <script src="/js/clean-blog.js"></script>

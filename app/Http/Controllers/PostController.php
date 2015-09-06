@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash; 
 
@@ -10,7 +12,9 @@ use Illuminate\Support\Facades\Hash;
 class PostController extends Controller {
 
   public function index (Request $request) {
-    $posts = Post::query()->get()->forPage(1,10)->all();
+    $posts = Post::query()->where('is_draft', 'false')
+                          ->orderBy('created_at','desc')
+                          ->get()->forPage(1,10)->all();
 
     foreach($posts as $post)
       $post->author = $post->getAuthor();
@@ -36,12 +40,17 @@ class PostController extends Controller {
     return view('post.index', [ 'post' => $post ]);
   }
 
+  public function new_post (Request $request) {
+    $post = new Post();
+    $post->title = "test";
+    $post->urlified_title = "test";
+    $post->author_id  = Auth::user()->id;
+    $post->save();
+
+    return view('post.create', ['post_id' => $post->id ]);
+  } 
+
   public function create (Request $request) {
-    if(empty($request->session()->get('current_author'))) {
-      // do something, like redirect to the login form.
-    }
-
-
     $this-validate($request, [
       'title' => 'required',
       'content' => 'required',
@@ -60,5 +69,19 @@ class PostController extends Controller {
   }
 
   public function delete ($id) {
+  }
+
+  public function image_bg_upload(Request $request) {
+    $post = Post::query()->findOrFail($request->input('post_id'));
+    $img = $post->id . "-bg." . $request->file('image-bg')->getClientOriginalExtension();
+    $post->image = "upload/$img" ;
+    $post->save();
+    $request->file('image-bg')->move(public_path('img').'/upload', $img);
+
+    return "{}";
+  }
+  public function image_upload(Request $request) {
+    $request->file('image-bg')->move(public_path('img').'/upload', $request->input('post_id') . ".jpg");
+    return "{}";
   }
 }
