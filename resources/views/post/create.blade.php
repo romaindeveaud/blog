@@ -5,7 +5,9 @@
 @section('content')
 <div class="container">
 <form class="form-post" method="POST" action="/create-post">
+<input type="hidden" name="_token" value="{{ csrf_token() }}">
 <input type="hidden" name="_post_id" value="{{ $post_id }}">
+<input type="hidden" name="_submit"  value="">
 <ul class="nav nav-tabs">
   <li class="active"><a data-toggle="tab" href="#tab-texte">Texte</a>
 <!--
@@ -18,6 +20,12 @@
   <li><a data-toggle="tab" href="#tab-imgs">Images du post</a></li>
 </ul>
 
+<div class="publish">
+<button type="button" class="btn draft-button btn-primary ember-view">Sauvegarder</button>
+
+<button type="button" class="btn publish-button btn-success ember-view">Publier</button>
+</div>
+
 <div class="tab-content">
   <div id="tab-texte" class="tab-pane fade in active">
     <input type="text" name="title" id="post_title" class="form-control" placeholder="Titre du post" />
@@ -25,7 +33,7 @@
   </div>
   <div id="tab-img-bg" class="tab-pane fade">
     <label class="control-label">Image de fond</label>
-    <input id="input-24" name="image-bg" type="file" multiple=true class="file-loading"> 
+    <input id="input-image-bg" name="image-bg" type="file" class="file-loading"> 
   </div>
   <div id="tab-imgs" class="tab-pane fade">
   </div>

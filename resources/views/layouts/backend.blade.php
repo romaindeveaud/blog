@@ -61,6 +61,7 @@
 
 
 
+    <script src="/js/ra4m.js"></script>
     <!-- Custom Theme JavaScript -->
     <script src="/js/clean-blog.js"></script>
 

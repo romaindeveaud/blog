@@ -42,4 +42,5 @@ $app->post('/delete-post/{id}', 'PostController@delete');
 $app->post('/edit-post/{id}', 'PostController@update');
 
 $app->post('/img-bg-upload', 'PostController@image_bg_upload');
-$app->post('/img-upload', 'PostController@image_upload');
+$app->post('/img-upload',    'PostController@image_upload');
+$app->post('/save-draft',    'PostController@save_draft');

@@ -42,33 +42,51 @@ class PostController extends Controller {
 
   public function new_post (Request $request) {
     $post = new Post();
-    $post->title = "test";
-    $post->urlified_title = "test";
     $post->author_id  = Auth::user()->id;
+    $post->is_draft = true;
     $post->save();
 
     return view('post.create', ['post_id' => $post->id ]);
   } 
 
   public function create (Request $request) {
+    /*
     $this-validate($request, [
       'title' => 'required',
       'content' => 'required',
       ]);
+     */
+    $post = $this->update($request, $request->input('_post_id'));
 
-    $post = new Post();
-    $post->title = $request->input('title');
-    $post->content = $request->input('content');
-    $post->count_read = 0;
-    $post->author_id  = $request->session()->get('current_author');
+    $is_draft = $request->input('_submit');
+
+    if($is_draft == "publish")
+      $post->is_draft = false;
 
     $post->save();
+
+    $redirect = $post->is_draft ? "/edit/$post->id" : "/post/$post->id" ;
+
+    return redirect($redirect);
   }
 
-  public function update ($id) {
+  public function update ($request, $id) {
+    $post = Post::query()->findOrFail($id);
+    $post->title = $request->input('title');
+    $post->urlified_title = Post::slugifyTitle($request->input('title'));
+    $post->content = "\n" . $request->input('content');
+
+    return $post;
   }
 
   public function delete ($id) {
+  }
+
+  /** Asynchronous methods. */
+
+  public function save_draft(Request $request) {
+    $post = $this->update($request, $request->input('_post_id'));
+    $post->save();
   }
 
   public function image_bg_upload(Request $request) {
@@ -78,7 +96,7 @@ class PostController extends Controller {
     $post->save();
     $request->file('image-bg')->move(public_path('img').'/upload', $img);
 
-    return "{}";
+    return "{ }";
   }
   public function image_upload(Request $request) {
     $request->file('image-bg')->move(public_path('img').'/upload', $request->input('post_id') . ".jpg");

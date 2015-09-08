@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title')</title>
 
@@ -17,6 +18,12 @@
     <!-- Custom CSS -->
     <link href="/css/clean-blog.css" rel="stylesheet">
     <link href="/css/blog.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+
+    <script src="/js/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/js/bootstrap.min.js"></script>
 
     <!-- Custom Fonts -->
     <link href="//fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css" />
@@ -96,10 +103,7 @@
     </footer>
 
     <!-- jQuery -->
-    <script src="/js/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/ra4m.js"></script>
 
     <!-- Custom Theme JavaScript -->
     <script src="/js/clean-blog.js"></script>
