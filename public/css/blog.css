@@ -66,3 +66,24 @@
     from { transform: scale(1) rotate(0deg);}
     to { transform: scale(1) rotate(360deg);}
 }
+
+
+
+.post-item {
+  font-size: 14px;
+}
+.post-item span {
+  margin-left:25px;
+}
+.post-item span .glyphicon {
+  margin-left:10px;
+}
+.post-item span .badge {
+  margin: 0;
+}
+
+.post-item .post-title {
+  font-size:18px;
+  font-weight: bold;
+}
+

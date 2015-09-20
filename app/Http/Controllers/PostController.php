@@ -80,6 +80,8 @@ class PostController extends Controller {
   }
 
   public function delete ($id) {
+    Post::destroy($id);
+    return redirect('/dashboard');
   }
 
   /** Asynchronous methods. */

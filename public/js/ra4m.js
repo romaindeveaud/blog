@@ -1,4 +1,8 @@
 $(document).on('ready', function() {
+  $('.post-item .clickable').on('click', function() {
+    $(this).siblings('.post-content').toggle( 300, function () {} );
+  });
+
     /*
   $('.form-post').on('submit', function() {
 
