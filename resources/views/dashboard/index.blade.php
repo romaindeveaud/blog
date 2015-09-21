@@ -29,7 +29,7 @@
         <a href="/post/edit/{{ $post->id }}">Modifier<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
         </span>
         <span>
-        <a href="/post/delete/{{ $post->id }}" role="button" data-toggle="confirmation" class="btn btn-sm btn-danger">Supprimer<span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+        <a href="#" role="button" data-href="/post/delete/{{ $post->id }}" data-placement="left" data-toggle="confirmation" class="btn btn-sm btn-danger">Supprimer<span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
         </span>
       </div>
       <div class="post-content" style="display:none;">
@@ -41,8 +41,24 @@
     @endforeach
   </ul>
 </div>
+<script src="/js/bootstrap-tooltip.js"></script>
 <script src="/js/bootstrap-confirmation.js"></script>
 <script>
-$('[data-toggle="confirmation"]').confirmation();
+$('[data-toggle="confirmation"]').confirmation({
+    title: "Sûr(e)?",
+    btnOkLabel: "Oui",
+    btnCancelLabel: "Non"
+});
+/*
+$('#finish').confirmation({  href:"intro.html",
+                                 onConfirm: function() {
+
+        if(current_event_edit == true)
+          $('#save_event').click();
+
+        sendAllEvents(); 
+      }
+    });
+ */
 </script>
 @stop
