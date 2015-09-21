@@ -44,12 +44,26 @@ class PostController extends Controller {
     $post = new Post();
     $post->author_id  = Auth::user()->id;
     $post->is_draft = true;
+    $post->content =  "# Intro\n" .
+  "Go ahead, play around with the editor! Be sure to check out **bold** and *italic* styling, or even [links](http://google.com). You can type the Markdown syntax, use the toolbar, or use shortcuts like `cmd-b` or `ctrl-b`.\n\n" .
+  "# Lists\n" .
+  "Unordered lists can be started using the toolbar or by typing `* `, `- `, or `+ `. Ordered lists can be started by typing `1. `.\n\n" .
+  "#### Unordered\n" .
+  "* Lists are a piece of cake\n" .
+  "* They even auto continue as you type\n" .
+  "* A double enter will end them\n" .
+  "* Tabs and shift-tabs work too\n\n" .
+  "#### Ordered\n" .
+  "1. Numbered lists...\n" .
+  "2. ...work too!\n\n" .
+  "## What about images?\n" .
+  "![Yes](http://i.imgur.com/sZlktY7.png)";
     $post->save();
 
-    return view('post.create', ['post_id' => $post->id ]);
+    return view('post.create', ['post' => $post ]);
   } 
 
-  public function create (Request $request) {
+  public function save (Request $request) {
     /*
     $this-validate($request, [
       'title' => 'required',
@@ -70,16 +84,26 @@ class PostController extends Controller {
     return redirect($redirect);
   }
 
-  public function update ($request, $id) {
+  public function edit (Request $request, $id) {
+    $post = Post::query()->findOrFail($id);
+
+    return view('post.create', ['post' => $post ]);
+  }
+
+
+  public function update (Request $request, $id) {
     $post = Post::query()->findOrFail($id);
     $post->title = $request->input('title');
     $post->urlified_title = Post::slugifyTitle($request->input('title'));
-    $post->content = "\n" . $request->input('content');
+
+    $post->content = $request->input('content');
+    if($post->content[1] != "\n")
+      $post->content = "\n" . $post->content;
 
     return $post;
   }
 
-  public function delete ($id) {
+  public function destroy ($id) {
     Post::destroy($id);
     return redirect('/dashboard');
   }

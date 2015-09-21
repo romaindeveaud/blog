@@ -37,9 +37,10 @@ $app->get('/new-post', [ 'middleware' => 'auth', function() use ($app) {
  */
 $app->get('/new-post', [ 'middleware' => 'auth', 'uses' => 'PostController@new_post' ]);
 
-$app->post('/create-post', 'PostController@create');
-$app->get('/post/delete/{id}', [ 'middleware' => 'auth', 'uses' => 'PostController@delete' ]);
-$app->get('/post/edit/{id}', [ 'middleware' => 'auth', 'uses' => 'PostController@update' ]);
+$app->post('/post/save', 'PostController@save');
+$app->get('/post/delete/{id}', [ 'middleware' => 'auth', 'uses' => 'PostController@destroy' ]);
+$app->get('/post/edit/{id}', [ 'middleware' => 'auth', 'uses' => 'PostController@edit' ]);
+$app->post('/post/update/{id}', [ 'middleware' => 'auth', 'uses' => 'PostController@update' ]);
 
 $app->post('/img-bg-upload', 'PostController@image_bg_upload');
 $app->post('/img-upload',    'PostController@image_upload');

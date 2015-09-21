@@ -1,12 +1,12 @@
 @extends('layouts.backend')
 
-@section('title', 'RÀ4M - Nouveau post')
+@section('title', 'RÀ4M')
 
 @section('content')
 <div class="container">
-<form class="form-post" method="POST" action="/create-post">
+<form class="form-post" method="POST" action="/post/save">
 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-<input type="hidden" name="_post_id" value="{{ $post_id }}">
+<input type="hidden" name="_post_id" value="{{ $post->id }}">
 <input type="hidden" name="_submit"  value="">
 <ul class="nav nav-tabs">
   <li class="active"><a data-toggle="tab" href="#tab-texte">Texte</a>
@@ -23,12 +23,14 @@
 <div class="publish">
 <button type="button" class="btn draft-button btn-primary ember-view">Sauvegarder</button>
 
+@if($post->is_draft)
 <button type="button" class="btn publish-button btn-success ember-view">Publier</button>
+@endif
 </div>
 
 <div class="tab-content">
   <div id="tab-texte" class="tab-pane fade in active">
-    <input type="text" name="title" id="post_title" class="form-control" placeholder="Titre du post" />
+    <input type="text" name="title" id="post_title" class="form-control" placeholder="Titre du post" value="{{ $post->title }}" />
     <textarea id="post_content" name="content"></textarea>
   </div>
   <div id="tab-img-bg" class="tab-pane fade">
@@ -43,28 +45,15 @@
 <script src="//cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 
 <script>
+var content = "{!! str_replace(array("\r\n", "\n", "\r"), "\\n", $post->content) !!}";
 var simplemde = new SimpleMDE({
   spellChecker: false,
   autosave: {
     enabled: true,
     unique_id: "post_content",
-    delay: 60000
+    delay: 10000
   },
-  initialValue: "# Intro\n" +
-  "Go ahead, play around with the editor! Be sure to check out **bold** and *italic* styling, or even [links](http://google.com). You can type the Markdown syntax, use the toolbar, or use shortcuts like `cmd-b` or `ctrl-b`.\n\n" +
-  "# Lists\n" +
-  "Unordered lists can be started using the toolbar or by typing `* `, `- `, or `+ `. Ordered lists can be started by typing `1. `.\n\n" +
-  "#### Unordered\n" +
-  "* Lists are a piece of cake\n" +
-  "* They even auto continue as you type\n" +
-  "* A double enter will end them\n" +
-  "* Tabs and shift-tabs work too\n\n" +
-  "#### Ordered\n" +
-  "1. Numbered lists...\n" +
-  "2. ...work too!\n\n" +
-  "## What about images?\n" +
-  "![Yes](http://i.imgur.com/sZlktY7.png)"
-
+  initialValue: content
 });
 simplemde.render();
 </script>

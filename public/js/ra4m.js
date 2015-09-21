@@ -45,6 +45,6 @@ $(document).on('ready', function() {
 
   setInterval(function() {
     $('.draft-button').click();
-  }, 60000);
+  }, 10000);
 
 });
