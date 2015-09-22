@@ -31,7 +31,7 @@
                   <a href="/">RA4M.</a>
               </li>
               <li>
-                  <a href="/about">À propos</a>
+                  <a href="/about">Qui donc?</a>
               </li>
 <!--
               <li>

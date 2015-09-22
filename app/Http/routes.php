@@ -47,3 +47,7 @@ $app->post('/img-upload',    'PostController@image_upload');
 $app->post('/save-draft',    'PostController@save_draft');
 
 $app->get('/dashboard', [ 'middleware' => 'auth', 'uses' => 'DashboardController@index' ]);
+
+$app->get('/about', function() use ($app) {
+  return view('about');
+});

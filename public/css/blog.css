@@ -87,3 +87,22 @@
   font-weight: bold;
 }
 
+.avatar-box.right {
+  float:right;
+  margin-left: 15px;
+}
+.avatar-box.left {
+  float:left;
+  margin-right: 15px;
+}
+.avatar-box img {
+  margin: 5px;
+  width: 100px;
+  height: 100px;
+  -webkit-border-radius: 60px; /* Saf3+, Chrome */
+  border-radius: 60px; /* Opera 10.5, IE 9 */
+ }
+.avatar-text {
+  text-align: justify;
+  font-size:85%;
+}

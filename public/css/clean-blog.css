@@ -285,7 +285,8 @@ article {
   border-bottom-left-radius: 5px;
 }
 footer {
-  padding: 50px 0 65px;
+  padding: 0 0 15px;
+  margin-top: -20px;
 }
 footer .list-inline {
   margin: 0;

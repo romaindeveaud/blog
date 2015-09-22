@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', $post->title . ' &mdash; RÀ4M')
+@section('title', $post->title . ' &mdash; RÀ4M.')
 @section('main_title', $post->title)
 @section('bgimg', '/img/'.$post->image) <!-- change with a post image -->
 
