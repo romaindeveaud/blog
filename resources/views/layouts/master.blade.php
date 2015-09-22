@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title') - Rà4M.</title>
+    <title>@yield('title')</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -54,7 +54,7 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="site-heading">
-                        <h1>@yield('title')</h1>
+                        <h1>@yield('post_title')</h1>
                         <hr />
                     </div>
                 </div>
