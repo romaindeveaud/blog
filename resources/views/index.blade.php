@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('title', 'Reboot à 4 mains.')
+@section('main_title', 'Reboot à 4 mains.')
 @section('bgimg', '/img/outdoor-bg.jpg')
 
 <?php setlocale(LC_TIME, 'fr_FR'); ?>
