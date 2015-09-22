@@ -2,14 +2,18 @@
 
 @section('title', 'RÀ4M - Tableau de bord')
 
-<?php setlocale(LC_TIME, 'fr_FR'); ?>
+<?php setlocale(LC_TIME, 'fr_FR'); ?> 
 
 @section('content')
 <div class="container">
   <ul class="list-group post-list">
     @foreach($posts as $post)
+    <?php $author = $post->getAuthor(); ?>
     <li class="list-group-item post-item">
       <span class="post-title">{{ $post->title }}</span>
+      <span class="avatar-box avt-sm">
+         <img src="/img/{{ $author->avatar }}" alt="{{ $author->name }}" title="{{ $author->name }}" />
+      </span>
         @if($post->is_draft)
           <span class="label label-info">Brouillon</span>
         @else

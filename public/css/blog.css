@@ -102,6 +102,10 @@
   -webkit-border-radius: 60px; /* Saf3+, Chrome */
   border-radius: 60px; /* Opera 10.5, IE 9 */
  }
+.avatar-box.avt-sm img {
+  width: 30px;
+  height: 30px;
+}
 .avatar-text {
   text-align: justify;
   font-size:85%;
