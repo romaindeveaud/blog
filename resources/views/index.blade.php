@@ -4,7 +4,9 @@
 @section('main_title', 'Reboot à 4 mains.')
 @section('bgimg', '/img/outdoor-bg.jpg')
 
-<?php setlocale(LC_TIME, 'fr_FR'); ?>
+<?php 
+setlocale(LC_TIME, "");
+setlocale(LC_TIME, 'fr_FR.utf8'); ?>
 
 @section('content')
   <div class="container">
