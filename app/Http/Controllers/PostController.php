@@ -19,6 +19,7 @@ class PostController extends Controller {
     foreach($posts as $post)
       $post->author = $post->getAuthor();
 
+
     return view('index', ['posts' => $posts]);
   }
 
