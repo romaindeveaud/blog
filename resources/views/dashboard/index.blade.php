@@ -8,11 +8,10 @@
 <div class="container">
   <ul class="list-group post-list">
     @foreach($posts as $post)
-    <?php $author = $post->getAuthor(); ?>
     <li class="list-group-item post-item">
       <span class="post-title">{{ $post->title }}</span>
       <span class="avatar-box avt-sm">
-         <img src="/img/{{ $author->avatar }}" alt="{{ $author->name }}" title="{{ $author->name }}" />
+         <img src="/img/{{ $post->author->avatar }}" alt="{{ $post->author->name }}" title="{{ $post->author->name }}" />
       </span>
         @if($post->is_draft)
           <span class="label label-info">Brouillon</span>

@@ -19,7 +19,7 @@ setlocale(LC_TIME, 'fr_FR.utf8'); ?>
               {{ $post->title }}
             </h2>
           </a>
-          <p class="post-meta"><a href="#">{{ $post->author->name }}</a>, le {{ strftime('%e %B %Y',strtotime($post->created_at))  }}</p>
+          <p class="post-meta"><a href="/about">{{ $post->author->name }}</a>, le {{ strftime('%e %B %Y',strtotime($post->created_at))  }}</p>
         </div>
          @endforeach
                 <hr>
