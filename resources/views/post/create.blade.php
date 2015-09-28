@@ -45,7 +45,7 @@
 <script src="//cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 
 <script>
-var content = "{!! str_replace(array("\r\n", "\n", "\r"), "\\n", $post->content) !!}";
+var content = "{!! str_replace(array("\r\n", "\n", "\r"), "\\n", addslashes($post->content)) !!}";
 var simplemde = new SimpleMDE({
   spellChecker: false,
   autosave: {
