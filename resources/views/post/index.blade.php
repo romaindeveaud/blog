@@ -12,6 +12,12 @@
         <div class="post-content">
           {{ $post->content }}
         </div>
+          <div style="float: right; font-size: 16px;">
+            &mdash; {{ $post->author->name }}
+            <span class="avatar-box avt-sm">
+               <img src="/img/{{ $post->author->avatar }}" alt="{{ $post->author->name }}" title="{{ $post->author->name }}" />
+            </span>
+          </div>
       </div></div>
   </div>
   </article>
