@@ -43,6 +43,10 @@
 .tab-pane {
   margin-top:20px;
 }
+p img + em {
+  font-size:14px;
+  display:block;
+}
 
 .publish {
   float:right;
