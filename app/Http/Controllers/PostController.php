@@ -59,6 +59,7 @@ class PostController extends Controller {
   "2. ...work too!\n\n" .
   "## What about images?\n" .
   "![Yes](http://i.imgur.com/sZlktY7.png)";
+    $post->image = "outdoor-bg.jpg";
     $post->save();
 
     return view('post.create', ['post' => $post ]);

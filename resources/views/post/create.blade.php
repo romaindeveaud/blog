@@ -7,6 +7,7 @@
 <form class="form-post" method="POST" action="/post/save">
 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 <input type="hidden" name="_post_id" value="{{ $post->id }}">
+<input type="hidden" name="_post_bg_image" value="{{ $post->image }}">
 <input type="hidden" name="_submit"  value="">
 <ul class="nav nav-tabs">
   <li class="active"><a data-toggle="tab" href="#tab-texte">Texte</a>

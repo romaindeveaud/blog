@@ -11,6 +11,12 @@ $(document).on('ready', function() {
   uploadUrl: '/img-bg-upload',
   uploadExtraData: { post_id: $('input[name="_post_id"]').attr('value') },
   allowedFileExtensions: ["jpg", "png", "gif"],
+  initialPreview: [
+    "<img style='height:160px' src='/img/"+$('input[name="_post_bg_image"]').attr('value')+"' />"
+    ],
+  initialPreviewConfig: [
+    {caption: $('input[name="_post_bg_image"]').attr('value'), width: "120px", url: "/site/file-delete", key: 1}
+  ],
   uploadAsync: false,
   minFileCount: 1,
   maxFileCount: 1,
