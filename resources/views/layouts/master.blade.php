@@ -98,7 +98,7 @@
                         </li>
                     </ul>
 -->
-                    <p class="copyright text-muted">Copyright &copy; Reboot à 4 mains. 2015</p>
+                    <p class="copyright text-muted">Copyright &copy; Reboot à <img src="/img/logo2.png" alt="4mains" title="4mains" id="mains-logo" /> 2015.</p>
                 </div>
             </div>
         </div>
