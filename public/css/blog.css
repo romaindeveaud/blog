@@ -97,6 +97,11 @@ p img + em {
   font-weight: bold;
 }
 
+.post-title {
+  float:left;
+  width: 370px;
+}
+
 .avatar-box.right {
   float:right;
   margin-left: 15px;

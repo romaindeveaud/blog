@@ -8,7 +8,7 @@
 <div class="container">
   <ul class="list-group post-list">
     @foreach($posts as $post)
-    <li class="list-group-item post-item">
+    <li class="list-group-item post-item clearfix">
       <span class="post-title">{{ $post->title }}</span>
       <span class="avatar-box avt-sm">
          <img src="/img/{{ $post->author->avatar }}" alt="{{ $post->author->name }}" title="{{ $post->author->name }}" />
