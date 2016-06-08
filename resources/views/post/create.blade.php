@@ -46,7 +46,7 @@
 <script src="//cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 
 <script>
-var content = "{!! str_replace(array("\r\n", "\n", "\r"), "\\n", addslashes($post->content)) !!}";
+var mysupercontent = "{!! str_replace(array("\r\n", "\n", "\r"), "\\n", addslashes($post->content)) !!}";
 var simplemde = new SimpleMDE({
   spellChecker: false,
   autosave: {
@@ -54,8 +54,9 @@ var simplemde = new SimpleMDE({
     unique_id: "post_content",
     delay: 10000
   },
-  initialValue: content
+  initialValue: mysupercontent
 });
+simplemde.value(mysupercontent);
 simplemde.render();
 </script>
 <script src="/js/image-loading.js"></script>
